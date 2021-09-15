@@ -2,6 +2,8 @@ const express = require("express");
 
 const app = express();
 
+app.use(express.json());
+
 app.get("/courses",(req,res) => {
     return res.json({
         courses:[
@@ -45,10 +47,13 @@ app.post("/courses",(req,res) => {
 });
 
 app.put("/courses/:id",(req,res) => {
+    const { id } = req.params;
+    console.log(id);
+    const { name } = req.body;
     return res.json({
         courses:[
             {
-                name : "Ignite",
+                name : name,
                 price : 2000
             },
             {
@@ -67,7 +72,9 @@ app.put("/courses/:id",(req,res) => {
     });
 });
 
-app.delete("/courses/:id",(req,res) => {
+app.delete("/courses",(req,res) => {
+    const { id } = req.query;
+    console.log(id);
     return res.json({
         courses:[
             {
