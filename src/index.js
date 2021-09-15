@@ -3,7 +3,9 @@ const express = require("express");
 const app = express();
 
 app.get("/",(req,res) => {
-    return res.send("Hello");
+    return res.json({ 
+        msg : "Hello Ignite"
+    });
 })
 
 app.listen(8080, () => {
